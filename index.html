@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Flanny21 🎂</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffeef2;
+            font-family: 'Nunito', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        #video-gatito {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            margin-bottom: 18px;
+            user-select: none;
+            display: block;
+        }
+
+        h1 {
+            color: #d6336c;
+            font-size: clamp(27px, 7vw, 38px);
+            font-weight: 900;
+            margin-bottom: 32px;
+            line-height: 1.2;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 900;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 6px 15px rgba(214, 51, 108, 0.15);
+            transition: all 0.25s ease;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        #btn-si {
+            background-color: #4cc38a;
+            font-size: 28px;
+            padding: 16px 46px;
+        }
+
+        #btn-no {
+            background-color: #e05263;
+            font-size: 28px;
+            padding: 16px 46px;
+        }
+
+        /* =====================================
+           PANTALLA DE LOS TRES REGALOS AWA
+        ===================================== */
+
+        .pantalla-regalos {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            width: 100%;
+            min-height: 100vh;
+            background: #fff0f4;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .gatito-final {
+            width: 165px;
+            height: 165px;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .titulo-regalos {
+            color: #d6336c;
+            font-size: clamp(25px, 6vw, 35px);
+            margin-bottom: 30px;
+        }
+
+        .lista-regalos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .regalo {
+            width: 135px;
+            height: 155px;
+            padding: 10px;
+            border: 2px solid #f2a6c0;
+            border-radius: 15px;
+            background: #fbd4e1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .regalo:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 18px #e7b4c6;
+        }
+
+        .regalo img {
+            width: 100%;
+            height: 105px;
+            object-fit: contain;
+        }
+
+        .regalo span {
+            color: #a93c69;
+            font-weight: 900;
+            margin-top: 5px;
+        }
+
+        /* =====================================
+           PANTALLAS INTERNAS 7U7
+        ===================================== */
+
+        .pantalla-contenido {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 20;
+            overflow-y: auto;
+            background: #fffafa;
+            padding: 30px 20px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .contenido-interior {
+            width: 100%;
+            max-width: 950px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .titulo-contenido {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(25px, 5vw, 38px);
+            color: #a34468;
+            margin-bottom: 30px;
+        }
+
+        .volver {
+            display: block;
+            background: #e45d91;
+            color: white;
+            padding: 12px 55px;
+            border-radius: 8px;
+            font-size: 18px;
+            margin: 30px auto 10px;
+            letter-spacing: 2px;
+        }
+
+        .volver:hover {
+            background: #c94279;
+        }
+
+        /* =====================================
+           GIFT 1: CAPTURADAS MEMORIAS OWO
+        ===================================== */
+
+        #gift-1 {
+            background: #fffafa;
+        }
+
+        .memory-wall {
+            display: grid;
+            grid-template-columns: 1fr .75fr .75fr 1fr;
+            gap: 12px;
+            align-items: center;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .memory-column {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .memory-photo {
+            background: white;
+            padding: 8px 8px 17px;
+            box-shadow: 0 3px 12px rgba(100, 60, 70, .13);
+            border: 1px solid #eadfe3;
+            transform: rotate(-2deg);
+        }
+
+        .memory-column:last-child .memory-photo {
+            transform: rotate(2deg);
+        }
+
+        .memory-photo img {
+            display: block;
+            width: 100%;
+            height: 135px;
+            object-fit: cover;
+            background: #d8e9ef;
+        }
+
+        .memory-strip {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 5px;
+            border: 1px solid #d9cbd0;
+            background: #fff;
+            transform: rotate(-1deg);
+        }
+
+        .memory-strip:nth-child(3) {
+            transform: rotate(1deg);
+        }
+
+        .memory-strip img {
+            display: block;
+            width: 100%;
+            height: 75px;
+            object-fit: cover;
+            background: #d8e9ef;
+        }
+
+        .memory-caption {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #9d4965;
+            font-size: clamp(18px, 4vw, 27px);
+            margin-top: 25px;
+        }
+
+        .sparkle {
+            color: #dba4c1;
+            font-size: 22px;
+            margin: 8px;
+        }
+
+        /* =====================================
+           GIFT 2: MUSICA 0w0
+        ===================================== */
+
+        #gift-2 {
+            background: #fffafa;
+        }
+
+        .music-layout {
+            display: grid;
+            grid-template-columns: .85fr 1.4fr;
+            gap: 22px;
+            align-items: stretch;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .vinyl-panel {
+            background: #f5c6d8;
+            border-radius: 20px;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .vinyl {
+            width: min(230px, 100%);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                repeating-radial-gradient(
+                    circle,
+                    #171419 0px,
+                    #27232a 3px,
+                    #111 5px,
+                    #29252b 7px
+                );
+            box-shadow: 0 8px 18px rgba(0,0,0,.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: girar 7s linear infinite;
+        }
+
+        .vinyl-label {
+            width: 32%;
+            height: 32%;
+            border-radius: 50%;
+            background: #e99ab8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 900;
+        }
+
+        @keyframes girar {
+            to { transform: rotate(360deg); }
+        }
+
+        .music-player {
+            background: #f4bfd3;
+            border: 12px solid #f8d6e2;
+            border-radius: 20px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+       
+.youtube-player {
+    width: 100%;
+    max-width: 550px;
+    aspect-ratio: 16 / 9;
+    margin: 15px auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(214, 51, 108, 0.2);
+}
+
+.youtube-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+        .music-controls {
+            margin-top: 12px;
+            padding: 12px 5px;
+            background: #e77ba4;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            color: white;
+        }
+
+        .music-controls span {
+            font-size: 22px;
+        }
+
+        .music-controls .play-symbol {
+            width: 48px;
+            height: 48px;
+            background: #ffe7ef;
+            color: #d65b8b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        /* =====================================
+           GIFT 3: CARTA te amo Estefany
+        ===================================== */
+
+        #gift-3 {
+            background: #fffafa;
+        }
+
+        .letter-scene {
+            width: 100%;
+            max-width: 850px;
+            min-height: 440px;
+            padding: 55px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("fondo.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f7dce3;
+            border-radius: 5px;
+        }
+
+        .letter-paper {
+            width: 100%;
+            background: rgba(255, 255, 255, .94);
+            padding: 35px 30px;
+            box-shadow: 0 4px 18px rgba(80, 30, 45, .15);
+            text-align: left;
+        }
+
+        .letter-paper h2 {
+            font-family: 'Playfair Display', serif;
+            color: #a34468;
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .letter-paper p {
+            color: #5d4b50;
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            line-height: 2;
+            white-space: pre-line;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            font-weight: bold;
+            color: #a34468 !important;
+            margin-top: 25px;
+        }
+
+        /* =====================================
+           ADAPTACIÓN PARA CELULARES INFALTABLE
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .lista-regalos {
+                gap: 9px;
+            }
+
+            .regalo {
+                width: 29vw;
+                max-width: 115px;
+                height: 130px;
+                padding: 7px;
+            }
+
+            .regalo img {
+                height: 85px;
+            }
+
+            .regalo span {
+                font-size: 12px;
+            }
+
+            .gatito-final {
+                width: 140px;
+                height: 140px;
+            }
+
+            .memory-wall {
+                grid-template-columns: 1fr .8fr .8fr 1fr;
+                gap: 5px;
+            }
+
+            .memory-column {
+                gap: 9px;
+            }
+
+            .memory-photo {
+                padding: 4px 4px 10px;
+            }
+
+            .memory-photo img {
+                height: 85px;
+            }
+
+            .memory-strip {
+                padding: 3px;
+                gap: 7px;
+            }
+
+            .memory-strip img {
+                height: 52px;
+            }
+
+            .music-layout {
+                grid-template-columns: 1fr 1.3fr;
+                gap: 10px;
+            }
+
+            .vinyl-panel {
+                min-height: 220px;
+                padding: 8px;
+            }
+
+            .music-player {
+                border-width: 7px;
+                padding: 7px;
+            }
+
+            .music-controls {
+                gap: 8px;
+                padding: 7px 3px;
+            }
+
+            .music-controls span {
+                font-size: 16px;
+            }
+
+            .music-controls .play-symbol {
+                width: 35px;
+                height: 35px;
+                font-size: 17px;
+            }
+
+            .letter-scene {
+                min-height: 400px;
+                padding: 30px 13px;
+            }
+
+            .letter-paper {
+                padding: 25px 16px;
+            }
+
+            .letter-paper p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================
+         PANTALLA INICIAL ORIGINAL INICIO P
+    ===================================== -->
+
+    <div class="container" id="pantalla-inicial">
+
+        <img id="video-gatito" src="gatito1.gif" alt="Osito tierno">
+
+        <h1 id="texto-pregunta">Estas lista? 🎂❤️</h1>
+
+        <div class="botones" id="botones">
+            <button id="btn-si">YES</button>
+            <button id="btn-no">NO</button>
+        </div>
+
+    </div>
+
+    <!-- =====================================
+         PANTALLA DE LOS 3 REGALOS
+    ===================================== -->
+
+    <section class="pantalla-regalos" id="pantalla-regalos">
+
+        <img class="gatito-final" src="gatito1.gif" alt="Gatito">
+
+        <h1 class="titulo-regalos">
+            Todo es tuyo! 💗😍
+        </h1>
+
+        <div class="lista-regalos">
+
+            <div class="regalo" onclick="abrirRegalo(1)">
+                <img src="regalos.png" alt="Regalo">
+                <span>GIFT 1</span>
+            </div>
+
+            <div class="regalo" onclick="abrirRegalo(2)">
+                <img src="regalos.png" alt="Regalo">
+                <span>GIFT 2</span>
+            </div>
+
+            <div class="regalo" onclick="abrirRegalo(3)">
+                <img src="regalos.png" alt="Regalo">
+                <span>GIFT 3</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         GIFT 1: CAPTURADAS MEMORIAS
+    ===================================== -->
+
+    <section class="pantalla-contenido" id="gift-1">
+
+        <div class="contenido-interior">
+
+            <div class="memory-wall">
+
+                <!-- FOTOGRAFIAS GRANDES IZQUIERDA -->
+
+                <div class="memory-column">
+
+                    <div class="memory-photo">
+                        <img src="img2.jpeg" alt="Recuerdo">
+                    </div>
+
+                    <div class="memory-photo">
+                        <img src="img3.jpeg" alt="Recuerdo">
+                    </div>
+
+                </div>
+
+                <!-- PRIMERA TIRA CENTRAL -->
+
+                <div class="memory-strip">
+                    <img src="img4.jpeg" alt="Recuerdo">
+                    <img src="img5.jpeg" alt="Recuerdo">
+                    <img src="img6.jpeg" alt="Recuerdo">
+                    <img src="img7.png" alt="Recuerdo">
+                </div>
+
+                <!-- SEGUNDA TIRA CENTRAL -->
+
+                <div class="memory-strip">
+                    <img src="img8.jpeg" alt="Recuerdo">
+                    <img src="img9.jpeg" alt="Recuerdo">
+                    <img src="img10.jpeg" alt="Recuerdo">
+                    <img src="img11.jpeg" alt="Recuerdo">
+                </div>
+
+                <!-- FOTOGRAFIAS GRANDES DERECHA -->
+
+                <div class="memory-column">
+
+                    <div class="memory-photo">
+                        <img src="img12.jpeg" alt="Recuerdo">
+                    </div>
+
+                    <div class="memory-photo">
+                        <img src="img13.jpeg" alt="Recuerdo">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sparkle">✦ ˚ ✧ ˚ ✦</div>
+
+            <h2 class="memory-caption">
+                Nuestros momentos miamor
+            </h2>
+
+            <button class="volver" onclick="volverRegalos()">
+                ATRAS
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         GIFT 2: MUSICA PARA LA MUJER DE MI VIDA
+    ===================================== -->
+
+    <section class="pantalla-contenido" id="gift-2">
+
+        <div class="contenido-interior">
+
+            <h2 class="titulo-contenido">
+                Esta es la cancion que escogi para nosotros dos❤️
+            </h2>
+
+            <div class="music-layout">
+
+                <!-- VINILO -->
+
+                <div class="vinyl-panel">
+
+                    <div class="vinyl">
+                        <div class="vinyl-label">
+                            MI VIDA
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- VIDEO MUSICAL -->
+
+                <div class="music-player">
+
+                    
+<div class="youtube-player">
+    <iframe
+        src="https://www.youtube-nocookie.com/embed/jasZiaZ5flk"
+        title="Her - JVKE"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+                    <div class="music-controls">
+                        <span>⊖</span>
+                        <span>♡</span>
+                        <span class="play-symbol">▶</span>
+                        <span>♡</span>
+                        <span>⊕</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button class="volver" onclick="volverRegalos()">
+                BACK
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         GIFT 3: carta
+    ===================================== -->
+
+    <section class="pantalla-contenido" id="gift-3">
+
+        <div class="contenido-interior">
+
+            <div class="letter-scene">
+
+                <div class="letter-paper">
+
+                    <h2>Para mi querida Estefany ❤️</h2>
+
+                    <p>
+Hola mi vida puede que leas esto un poco tarde despues del dia especial en que nacio la mujer que mas amo
+
+Quiero recodarte que siempre te voy amar Feliz 22y miamor no sabes cuan feliz y a la vez triste pq no pude estar a tu lado
+
+Pero eso si que todos nuestros dias juntos sean para contruir algo mas bonito y poder disfrutarlo en nuestro futuro juntos 😍❤️
+                    </p>
+
+                    <p class="letter-signature">
+                        con amor de tu futuro esposo ❤️
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button class="volver" onclick="volverRegalos()">
+                ATRAS
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         JAVASCRIPT
+    ===================================== -->
+
+    <script>
+
+        // ELEMENTOS DE LA PÁGINA ORIGINAL
+
+        const btnSi = document.getElementById('btn-si');
+        const btnNo = document.getElementById('btn-no');
+        const gatito = document.getElementById('video-gatito');
+        const textoPregunta = document.getElementById('texto-pregunta');
+        const botones = document.getElementById('botones');
+
+        // MENSAJES CUANDO PRESIONAN NO
+
+        const mensajes = [
+            "Estas segura? 🥺",
+            "Piensalo de nuevo! 💗",
+            "No me hagas esto! 😭",
+            "Porfavorr si? 🥹",
+            "Intentalo de nuevo! ❤️"
+        ];
+
+        let contador = 0;
+        let tamaño = 28;
+
+        // BOTÓN NO
+
+        btnNo.addEventListener('click', function() {
+
+            textoPregunta.textContent =
+                mensajes[contador % mensajes.length];
+
+            if (contador % 2 === 0) {
+                gatito.src = "gatito2.gif";
+            } else {
+                gatito.src = "gatito3.gif";
+            }
+
+            tamaño += 5;
+
+            btnSi.style.fontSize = tamaño + "px";
+
+            btnSi.style.padding =
+                (16 + contador * 2) + "px " +
+                (46 + contador * 5) + "px";
+
+            contador++;
+
+        });
+
+        // BOTÓN YES
+
+        btnSi.addEventListener('click', function() {
+
+            gatito.src = "gatito1.gif";
+
+            textoPregunta.textContent =
+                "I knew you would say YES! 💗";
+
+            botones.style.display = "none";
+
+            document.getElementById('pantalla-inicial').style.display = 'none';
+
+            document.getElementById('pantalla-regalos').style.display = 'flex';
+
+        });
+
+        // ABRIR REGALOS
+
+        function abrirRegalo(numero) {
+
+            document.getElementById('pantalla-regalos').style.display = 'none';
+
+            document.getElementById('gift-' + numero).style.display = 'flex';
+
+        }
+
+        // VOLVER A LOS REGALOS
+
+        function volverRegalos() {
+
+            document.querySelectorAll('.pantalla-contenido').forEach(function(pantalla) {
+
+                const video = pantalla.querySelector('video');
+
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+
+                pantalla.style.display = 'none';
+
+            });
+
+            document.getElementById('pantalla-regalos').style.display = 'flex';
+
+        }
+
+    </script>
+
+</body>
+</html>
